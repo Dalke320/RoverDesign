@@ -1,4 +1,4 @@
-import bluetooth
+
 import sys
 import subprocess
 import os
@@ -7,27 +7,17 @@ import pexpect
 
 MAC = "00:22:D0:CD:34:6A"
 
-def connect():
+
+
+	
+def battery():
 	child = pexpect.spawn("gatttool -I")
 	child .sendline("connect 00:22:D0:CD:34:6A")
 	child.sendline("connect")
 	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
 	child.expect("Connection successful", timeout = 15)
 	print("Conencted successfully")
-	return child
-	
-def connect2():
-	child = pexpect.spawn("sudo gatttool -t random -b 00:22:D0:CD:34:6A -I connect")
-	child .sendline("connect 00:22:D0:CD:34:6A")
-	child.sendline("connect")
-	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
-	child.expect("Connection successful", timeout = 15)
-	print("Conencted successfully")
-	return child
 
-	
-def battery():
-	connect()
 	child.sendline("char-read-hnd 27")
 	child.expect("Characteristic value/descriptor: ", timeout=10)
 	child.expect("\r\n", timeout=10)
@@ -35,7 +25,13 @@ def battery():
 	print(int(child.before,16), "%")
 	
 def battery2():
-	connect2()
+	child = pexpect.spawn("sudo gatttool -t random -b 00:22:D0:CD:34:6A -I connect")
+	child .sendline("connect 00:22:D0:CD:34:6A")
+	child.sendline("connect")
+	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
+	child.expect("Connection successful", timeout = 15)
+	print("Conencted successfully")
+
 	child.sendline("char-read-hnd 27")
 	child.expect("Characteristic value/descriptor: ", timeout=10)
 	child.expect("\r\n", timeout=10)
@@ -43,7 +39,13 @@ def battery2():
 	print(int(child.before,16), "%")
 
 def heartread():
-	connect()
+	child = pexpect.spawn("gatttool -I")
+	child .sendline("connect 00:22:D0:CD:34:6A")
+	child.sendline("connect")
+	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
+	child.expect("Connection successful", timeout = 15)
+	print("Conencted successfully")
+
 	try:
 		while 1:
 			child.sendline("char-write-req 0x0013 0100")
@@ -64,7 +66,13 @@ def heartread():
 	
 def heartread2():
 
-	connect2()
+	child = pexpect.spawn("sudo gatttool -t random -b 00:22:D0:CD:34:6A -I connect")
+	child .sendline("connect 00:22:D0:CD:34:6A")
+	child.sendline("connect")
+	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
+	child.expect("Connection successful", timeout = 15)
+	print("Conencted successfully")
+
 
 	try:
 		while 1:
