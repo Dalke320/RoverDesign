@@ -6,8 +6,8 @@ import time
 
 session = gps.gps()
 session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
-myfile = open('/home/rover/rovercode/Rover/RoverDesign/Code/gpsresults.txt','a')
-resetfile = open('/home/rover/rovercode/Rover/RoverDesign/Code/gpsresults.txt','w')
+myfile = open('/Desktop/RoverDesign/Code/gpsresults.txt','a')
+resetfile = open('/Desktop/RoverDesign/Code/gpsresults.txt','w')
 
 
 

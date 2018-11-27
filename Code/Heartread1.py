@@ -54,7 +54,7 @@ def heartread():
 			child.expect("\r\n", timeout = 10)
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
-			myfile = open('/home/rover/rovercode/Rover/RoverDesign/Code/Heart1Results.txt','a')
+			myfile = open('/Desktop/RoverDesign/Code/Heart1Results.txt','a')
 			myfile.write(str(h) + "\n")
 			
 			
@@ -82,7 +82,7 @@ def heartread2():
 			child.expect("\r\n", timeout = 10)
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
-			myfile = open('/home/rover/rovercode/Rover/RoverDesign/Code/Heart1Results.txt','a')
+			myfile = open('/Desktop/RoverDesign/Code/Heart1Results.txt','a')
 			myfile.write(str(h) + "\n")
 			
 	
