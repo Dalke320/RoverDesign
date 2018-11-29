@@ -1,1 +1,1 @@
-Gps results for gps
+12.1231,41.1231
