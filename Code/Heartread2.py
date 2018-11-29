@@ -41,7 +41,7 @@ def heartread():
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart2Results.txt','a')
-			myfile.write(str(h) + "\n")
+			myfile.write(str(h) + "," + "\n")
 			
 	
 	except KeyboardInterrupt:
@@ -67,7 +67,7 @@ def heartread2():
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart2Results.txt','a')
-			myfile.write(str(h) + "\n")
+			myfile.write(str(h) + "," +"\n")
 			
 	
 	except KeyboardInterrupt:

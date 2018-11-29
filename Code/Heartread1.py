@@ -27,7 +27,7 @@ def battery():
 def heartread():
 
 	child = pexpect.spawn("gatttool -I")
-	child .sendline("connect 00:22:D0:CD:34:6A")
+	child.sendline("connect 00:22:D0:CD:34:6A")
 	
 	child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
 	child.expect("Connection successful", timeout = 15)
@@ -42,7 +42,7 @@ def heartread():
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart1Results.txt','a')
-			myfile.write(str(h) + "\n")
+			myfile.write(str(h) + "," + "\n")
 			
 			
 	
@@ -70,7 +70,7 @@ def heartread2():
 			h = int(child.before[2:5],16)
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart1Results.txt','a')
-			myfile.write(str(h) + "\n")
+			myfile.write(str(h) + "," +"\n")
 			
 	
 	except KeyboardInterrupt:
