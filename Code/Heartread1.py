@@ -1,4 +1,3 @@
-
 import sys
 import subprocess
 import os
@@ -24,25 +23,13 @@ def battery():
 	print("charge: "),
 	print(int(child.before,16), "%")
 	
-def battery2():
-	child = pexpect.spawn("sudo gatttool -t random -b 00:22:D0:CD:34:6A -I connect")
-	child .sendline("connect 00:22:D0:CD:34:6A")
-	child.sendline("connect")
-	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
-	child.expect("Connection successful", timeout = 15)
-	print("Conencted successfully")
-
-	child.sendline("char-read-hnd 27")
-	child.expect("Characteristic value/descriptor: ", timeout=10)
-	child.expect("\r\n", timeout=10)
-	print("charge: "),
-	print(int(child.before,16), "%")
 
 def heartread():
+
 	child = pexpect.spawn("gatttool -I")
 	child .sendline("connect 00:22:D0:CD:34:6A")
-	child.sendline("connect")
-	#child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
+	
+	child.expect("Attempting to connect to 00:22:D0:CD:34:6A")
 	child.expect("Connection successful", timeout = 15)
 	print("Conencted successfully")
 
@@ -95,24 +82,26 @@ def close():
 try:
 	while 1:
 		print("Please enter a command: " )
-		print("1. Read the battery life of the monitor.")
+		print("1. Reset Log file.")
 		print("2. Read the battery life of the monitor. If option 1 fails." )
 		print("3. Start monitoring heartrate data. Crtl + c to stop" )
 		print("4. Start monitoring heartrate data if 3 does not work." )
 		print("5. Exit cmd")
 		var = input()
-		if var == '1':
-			battery2() 
-		if var == '2':
+		print(var)
+		if var == 1:
+			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart1Results.txt','w')
+			myfile.write("") 
+		if var == 2:
 			battery()
-		if var == '3':
+		if var == 3:
 			heartread2()
-		if var == '4':
+		if var == 4:
+
 			heartread()
-		if var == '5':
+		if var == 5:
 			quit()
 			
 			
 except:
-	print("Disguise's my errors as a successful exit")
-
+	gatt = subprocess.Popen(["exit"])
