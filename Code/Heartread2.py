@@ -2,7 +2,7 @@
 import sys
 import subprocess
 import os
-
+import time
 import pexpect
 
 MAC = "00:22:D0:D8:F5:22"
@@ -42,6 +42,7 @@ def heartread():
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart2Results.txt','a')
 			myfile.write(str(h) + "," + "\n")
+			time.sleep(1)
 			
 	
 	except KeyboardInterrupt:
@@ -68,6 +69,7 @@ def heartread2():
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart2Results.txt','a')
 			myfile.write(str(h) + "," +"\n")
+			time.sleep(1)
 			
 	
 	except KeyboardInterrupt:

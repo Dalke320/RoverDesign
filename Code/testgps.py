@@ -32,14 +32,14 @@ def position():
 			if report['class'] == 'TPV':
 				if hasattr(report, 'lon'):
 					print (report.lon)
-					myfile.write("Longitude: " + str(report.lon) + "\n")
+					myfile = open('/home/pi/Desktop/RoverDesign/Code/gpsresults.txt','a')
+					myfile.write(str(report.lon) +"," +"\n")
 				if hasattr(report, 'lat'):
 					print (report.lat)
-					myfile.write("Lattitude: " + str(report.lat) + "\n")
-				if hasattr(report, 'lon'):
-					print (report.speed)
-					myfile.write("Speed: " + str(report.speed) + "\n")
-			#time.sleep(2)
+					myfile = open('/home/pi/Desktop/RoverDesign/Code/gpsresults.txt','a')
+					myfile.write(str(report.lat) + "," +"\n")
+					
+				
 	except KeyboardInterrupt:
 		print("Exiting Postion")
 

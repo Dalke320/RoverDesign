@@ -43,6 +43,7 @@ def heartread():
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart1Results.txt','a')
 			myfile.write(str(h) + "," + "\n")
+			time.sleep(1)
 			
 			
 	
@@ -71,6 +72,7 @@ def heartread2():
 			print(h, "bpm")
 			myfile = open('/home/pi/Desktop/RoverDesign/Code/Heart1Results.txt','a')
 			myfile.write(str(h) + "," +"\n")
+			time.sleep(1)
 			
 	
 	except KeyboardInterrupt:
